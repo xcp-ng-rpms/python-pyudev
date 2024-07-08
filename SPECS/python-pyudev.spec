@@ -5,7 +5,7 @@
 %global srcname pyudev
 Name:             python-%{srcname}
 Version:          0.21.0
-Release:          %{?xsrel}%{?dist}
+Release:          %{?xsrel}.1%{?dist}
 Summary:          A libudev binding
 
 License:          LGPLv2+
@@ -30,6 +30,7 @@ officially supported.
 %package -n python2-%{srcname}
 Summary:          A libudev binding
 Provides:         python-%{srcname} = %{version}-%{release}
+Obsoletes:        python-%{srcname} < %{version}-%{release}
 
 BuildRequires:    python2-devel
 BuildRequires:    python2-setuptools
@@ -129,6 +130,9 @@ rm -rf pyudev.egg-info
 %exclude %{python3_sitelib}/pyudev/__pycache__/wx.*
 
 %changelog
+* Fri Jul 05 2024 Samuel Verschelde <stormi-xcp@ylix.fr> - 0.21.0-2.1
+- Obsolete the old python-pyudev package in order to be seen as an update for it
+
 * Mon Mar 18 2024 Alex Brett <alex.brett@cloud.com> - 0.21.0-2
 - CA-390424: Add missing version-release to the python-pyudev provide
 
